@@ -3,9 +3,16 @@
 
 class Mila {
 private:
-	// Por ahora usaremos un rectángulo, luego será un Sprite
-	sf::RectangleShape forma;
+	sf::Sprite sprite; // Muñeco que se ve en la pantalla
+	sf::Texture textura; // La imagen cargada en memoria (la hoja completa)
 	float velocidad;
+
+	// --- Variables de animación ---
+	sf::Clock relojAnimcación;
+	int frameActual;
+	float tiempoPorFrame;
+	int anchoFrame;
+	int altoFrame;
 
 public:
 	// Constructor
