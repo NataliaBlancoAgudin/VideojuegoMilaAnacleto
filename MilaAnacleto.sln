@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MilaAnacleto", "MilaAnacleto\MilaAnacleto.vcxproj", "{FEEC1EF4-CD8C-4829-B0BA-340895F915BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEEC1EF4-CD8C-4829-B0BA-340895F915BF}.Debug|x64.ActiveCfg = Debug|x64
+		{FEEC1EF4-CD8C-4829-B0BA-340895F915BF}.Debug|x64.Build.0 = Debug|x64
+		{FEEC1EF4-CD8C-4829-B0BA-340895F915BF}.Debug|x86.ActiveCfg = Debug|Win32
+		{FEEC1EF4-CD8C-4829-B0BA-340895F915BF}.Debug|x86.Build.0 = Debug|Win32
+		{FEEC1EF4-CD8C-4829-B0BA-340895F915BF}.Release|x64.ActiveCfg = Release|x64
+		{FEEC1EF4-CD8C-4829-B0BA-340895F915BF}.Release|x64.Build.0 = Release|x64
+		{FEEC1EF4-CD8C-4829-B0BA-340895F915BF}.Release|x86.ActiveCfg = Release|Win32
+		{FEEC1EF4-CD8C-4829-B0BA-340895F915BF}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83DC0006-E0D3-47D9-B24F-41886444E914}
+	EndGlobalSection
+EndGlobal
