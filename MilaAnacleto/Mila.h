@@ -1,40 +1,15 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "Entidad.h"
 
-class Mila {
-private:
-	sf::Sprite sprite; // Muñeco que se ve en la pantalla
-	sf::Texture textura; // La imagen cargada en memoria (la hoja completa)
-	float velocidad;
-
-	// --- Variables de animación ---
-	sf::Clock relojAnimcación;
-	int frameActual;
-	float tiempoPorFrame;
-	int anchoFrame;
-	int altoFrame;
-
-	sf::Clock relojInactividad;
-
-	// Direcciones de la animacion y direccion actual
-	enum Direccion {
-		Abajo = 0,
-		AbajoIzquierda = 1,
-		AbajoDerecha = 2,
-		Izquierda = 3,
-		Derecha = 4,
-		Arriba = 5,
-		ArribaIzquierda = 6,
-		ArribaDerecha = 7,
-	};
-	Direccion direccionActual;
-
+class Mila : public Entidad{
 public:
 	// Constructor
 	Mila();
 
 	// Métodos principales
-	void actualizar(); // Aquí procesaremos las teclas
-	void dibujar(sf::RenderWindow& ventana); // Aquí la pintaremos
+	//void actualizar() override; // Aquí procesaremos las teclas
+	
+	// Lo heredamos de Entidad asi que no lo necesitamos
+	// void dibujar(sf::RenderWindow& ventana); // Aquí la pintaremos
 
 };

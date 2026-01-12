@@ -8,8 +8,13 @@ int main() {
 	// 2. Crear las instancias (Objetos)
 	Mila jugadorMila;
 
+	sf::Clock relojDelta;
+
 	// 3. Game Loop (bucle del juego)
 	while (window.isOpen()) {
+		// Calcular deltaTime (tiempo que pasó desde el último frame)
+		sf::Time dt = relojDelta.restart();
+
 		// A. Procesar eventos (Cerrar ventana)
 		sf::Event event;
 		while (window.pollEvent(event)) {
@@ -18,7 +23,7 @@ int main() {
 		}
 
 		// B. Actualizar lógica (Mover cosas)
-		jugadorMila.actualizar();
+		jugadorMila.actualizar(dt);
 
 		// c. Renderizar (Dibujar cosas)
 		window.clear(sf::Color(34, 139, 34));

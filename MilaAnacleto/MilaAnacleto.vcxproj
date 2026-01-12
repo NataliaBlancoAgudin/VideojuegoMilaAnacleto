@@ -132,11 +132,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mila.cpp" />
+    <ClCompile Include="MovimientoTeclado.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Direccion.h" />
+    <ClInclude Include="Entidad.h" />
+    <ClInclude Include="EstrategiaMovimiento.h" />
     <ClInclude Include="Mila.h" />
+    <ClInclude Include="MovimientoTeclado.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
