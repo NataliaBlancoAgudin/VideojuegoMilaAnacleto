@@ -1,0 +1,5 @@
+Estos sprites se corresponden con la animación de Torchic caminando. 
+
+Al principio creía que necesitaba un Sprite por cada uno de los movimientos (de ahí que haya 4 documentos en la carpeta "Ajustados" llamados "Mila_walk_X.png"); pero, consultando lo que se hace en videojuegos, que es una hoja con todos los sprites juntos separados por filas, diseñe la hoja "Mila_walk.png" que agrupa los distintos sprites. 
+
+La diferencia es que, en los sprites individuales se ajustó el tamaño de cada uno de ellos, mientras que el general tiene un tamaño de 32*32 cada frame (haciendo que cada animación sea de 192*32).

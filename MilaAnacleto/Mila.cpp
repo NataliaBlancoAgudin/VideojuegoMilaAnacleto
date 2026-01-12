@@ -11,11 +11,13 @@ Mila::Mila() {
 	sprite.setTexture(textura);
 
 	// 3. Configuración inicial
-	anchoFrame = 14;
-	altoFrame = 22;
+	anchoFrame = 32;
+	altoFrame = 32;
 
 	frameActual = 0;
 	tiempoPorFrame = 0.10f;
+
+	direccionActual = Abajo;
 
 	// 3. Seleccionar el primer cuadro
 	sprite.setTextureRect(sf::IntRect(0, 0, anchoFrame, altoFrame));
@@ -33,22 +35,28 @@ void Mila::actualizar() {
 	// Detectar teclado (WASD o flechas)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		sprite.move(0.f, -velocidad);
+		direccionActual = Arriba;
 		seEstaMoviendo = true;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 		sprite.move(0.f, velocidad);
+		direccionActual = Abajo;
 		seEstaMoviendo = true;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		sprite.move(-velocidad, 0.f);
+		direccionActual = Izquierda;
 		seEstaMoviendo = true;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		sprite.move(velocidad, 0.f);
+		direccionActual = Derecha;
 		seEstaMoviendo = true;
 	}
 
 	// animacion
+	int fila = direccionActual;
+
 	if (seEstaMoviendo) {
 		if (relojAnimcación.getElapsedTime().asSeconds() > tiempoPorFrame) {
 			frameActual++;
@@ -58,8 +66,9 @@ void Mila::actualizar() {
 			}
 
 			int posX = frameActual * anchoFrame;
+			int posY = fila * altoFrame;
 
-			sprite.setTextureRect(sf::IntRect(posX, 0, anchoFrame, altoFrame));
+			sprite.setTextureRect(sf::IntRect(posX, posY, anchoFrame, altoFrame));
 
 			relojAnimcación.restart();
 		}
@@ -67,7 +76,9 @@ void Mila::actualizar() {
 	else {
 		frameActual = 2;
 		int posX = frameActual * anchoFrame;
-		sprite.setTextureRect(sf::IntRect(posX, 0, anchoFrame, altoFrame));
+		int posY = fila * altoFrame;
+
+		sprite.setTextureRect(sf::IntRect(posX, posY, anchoFrame, altoFrame));
 	}
 }
 

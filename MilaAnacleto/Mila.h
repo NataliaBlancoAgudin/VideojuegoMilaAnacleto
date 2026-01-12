@@ -14,6 +14,10 @@ private:
 	int anchoFrame;
 	int altoFrame;
 
+	// Direcciones de la animacion y direccion actual
+	enum Direccion { Abajo = 0, Izquierda = 1, Derecha = 2, Arriba = 3};
+	Direccion direccionActual;
+
 public:
 	// Constructor
 	Mila();
