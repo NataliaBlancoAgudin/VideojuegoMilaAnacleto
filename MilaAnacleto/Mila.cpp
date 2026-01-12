@@ -40,6 +40,9 @@ void Mila::actualizar() {
 	bool izquierda = sf::Keyboard::isKeyPressed(sf::Keyboard::A);
 	bool derecha = sf::Keyboard::isKeyPressed(sf::Keyboard::D);
 
+	// Si tocamos CUALQUIER tecla reiniciamos el reloj de inactividad a 0
+	if (arriba || abajo || izquierda || derecha) relojInactividad.restart();
+
 	if (arriba) movimientoY -= velocidad;
 	if (abajo) movimientoY += velocidad;
 	if (izquierda) movimientoX -= velocidad;
@@ -86,14 +89,57 @@ void Mila::actualizar() {
 			relojAnimcación.restart();
 		}
 	}
+
+	// 4. Si estamos quietos
 	else {
-		frameActual = 2;
-		int fila = static_cast<int>(direccionActual);
+		int filaIdl = 8;
 
-		int posX = frameActual * anchoFrame;
-		int posY = fila * altoFrame;
+		switch (direccionActual) {
+		case Arriba:
+		case ArribaDerecha:
+		case ArribaIzquierda:
+			filaIdl = 11;
+			break;
 
-		sprite.setTextureRect(sf::IntRect(posX, posY, anchoFrame, altoFrame));
+		case Derecha:
+		case AbajoDerecha:
+			filaIdl = 10;
+			break;
+
+		case Izquierda:
+		case AbajoIzquierda:
+			filaIdl = 9;
+			break;
+
+		case Abajo:
+		default:
+			filaIdl = 8;
+			break;
+		}
+
+		float tiempoEspera = 10.0f;
+
+		if (relojInactividad.getElapsedTime().asSeconds() > tiempoEspera) {
+			// Animamos el bote (esta rquieto)
+			if (relojAnimcación.getElapsedTime().asSeconds() > 0.20f) {
+				frameActual++;
+				if (frameActual >= 6) frameActual = 0;
+
+				int posX = frameActual * anchoFrame;
+				int posY = filaIdl * altoFrame;
+
+				sprite.setTextureRect(sf::IntRect(posX, posY, anchoFrame, altoFrame));
+				relojAnimcación.restart();
+			}
+		}
+		else {
+			frameActual = 2;
+
+			int posX = frameActual * anchoFrame;
+			int posY = filaIdl * altoFrame;
+
+			sprite.setTextureRect(sf::IntRect(posX, posY, anchoFrame, altoFrame));
+		}
 	}
 }
 

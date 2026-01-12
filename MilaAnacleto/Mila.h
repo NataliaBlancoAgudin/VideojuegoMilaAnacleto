@@ -14,16 +14,18 @@ private:
 	int anchoFrame;
 	int altoFrame;
 
+	sf::Clock relojInactividad;
+
 	// Direcciones de la animacion y direccion actual
-	enum Direccion { 
-		Abajo = 0, 
-		AbajoIzquierda = 1, 
-		AbajoDerecha = 2, 
+	enum Direccion {
+		Abajo = 0,
+		AbajoIzquierda = 1,
+		AbajoDerecha = 2,
 		Izquierda = 3,
 		Derecha = 4,
 		Arriba = 5,
 		ArribaIzquierda = 6,
-		ArribaDerecha = 7
+		ArribaDerecha = 7,
 	};
 	Direccion direccionActual;
 
