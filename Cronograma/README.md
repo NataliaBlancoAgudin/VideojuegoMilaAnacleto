@@ -39,10 +39,14 @@ Proyecto de desarrollo de videojuegos en C++ y SFML. Este repositorio documenta 
 ---
 
 ### 📅 13/01/2026 - IA y Segundo Personaje
-**Objetivo:** Añadir un compañero (Anacleto) con comportamiento autónomo.
+**Objetivo:** Añadir un compañero (Anacleto) con comportamiento autónomo, cámara que siga al personaje principal y mapa.
 
 * **Creación de Anacleto (Mudkip):**
   * Gracias a la clase `Entidad`, la creación del nuevo personaje fue inmediata, heredando todas las propiedades visuales y lógicas de Mila.
+* **Incorporación de cámara que sigue al personaje**
+  * Hemos incorporado la cámara de movimiento, para que nuestros personajes no se salgan de la pantalla, y está les siga a donde vayan. De momento solo está para que siga al personaje de Mila, pero esto en un futuro se deberá de cambiar para que siga al personaje principal.
+* **Mapa**
+  * Se ha añadido un mapa de prueba (`mapa_fondo.jpg`) utilizado para ver si se implementó bien la parte de la cámara (en el futuro se añadirá el mapa real del videojuego).
 * **Nueva Estrategia de Movimiento (`MovimientoSeguir`):**
   * Se implementó una IA de seguimiento para que Anacleto acompañe a Mila.
   * **Lógica:** Cálculo de vectores de dirección y distancia mínima de confort.
