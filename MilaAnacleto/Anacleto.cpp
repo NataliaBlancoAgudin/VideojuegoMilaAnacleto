@@ -17,7 +17,7 @@ Anacleto::Anacleto(const sf::Sprite& spriteMila) {
 	frameActual = 0;
 	tiempoPorFrame = 0.10f;
 	direccionActual = Abajo;
-	velocidad = 90.0f;
+	velocidad = 120.0f;
 
 	// 4. Posición y escala
 	sprite.setPosition(500.f, 300.f);

@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "Mila.h"
 #include "Anacleto.h"
+#include "Mapa.h"
 
 int main() {
 	// 1. Configuracion de la ventana
@@ -10,7 +11,10 @@ int main() {
 	Mila jugadorMila;
 	Anacleto jugadorAnacleto(jugadorMila.getSprite());
 
+	Mapa mapa;
+
 	sf::Clock relojDelta;
+	sf::View vista(sf::FloatRect(0.f, 0.f, 800.f, 600.f)); // Camara
 
 	// 3. Game Loop (bucle del juego)
 	while (window.isOpen()) {
@@ -28,9 +32,19 @@ int main() {
 		jugadorMila.actualizar(dt);
 		jugadorAnacleto.actualizar(dt);
 
-		// c. Renderizar (Dibujar cosas)
-		window.clear(sf::Color(34, 139, 34));
+		// Centrar la camara
+		sf::Vector2f posicionMila = jugadorMila.getSprite().getPosition();
+		posicionMila.x += 16;
+		posicionMila.y += 16;
+		vista.setCenter(posicionMila);
 
+		// c. Renderizar (Dibujar cosas)
+		window.clear();
+
+		// Activamos la camara
+		window.setView(vista);
+
+		mapa.dibujar(window);
 		jugadorMila.dibujar(window);
 		jugadorAnacleto.dibujar(window);
 
