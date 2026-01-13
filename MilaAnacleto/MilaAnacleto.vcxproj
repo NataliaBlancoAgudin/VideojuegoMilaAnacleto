@@ -132,12 +132,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Anacleto.cpp" />
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mila.cpp" />
     <ClCompile Include="MovimientoTeclado.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Anacleto.h" />
     <ClInclude Include="Direccion.h" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="EstrategiaMovimiento.h" />

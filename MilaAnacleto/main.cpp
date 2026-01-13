@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Mila.h"
+#include "Anacleto.h"
 
 int main() {
 	// 1. Configuracion de la ventana
@@ -7,6 +8,7 @@ int main() {
 
 	// 2. Crear las instancias (Objetos)
 	Mila jugadorMila;
+	Anacleto jugadorAnacleto;
 
 	sf::Clock relojDelta;
 
@@ -24,11 +26,13 @@ int main() {
 
 		// B. Actualizar lógica (Mover cosas)
 		jugadorMila.actualizar(dt);
+		jugadorAnacleto.actualizar(dt);
 
 		// c. Renderizar (Dibujar cosas)
 		window.clear(sf::Color(34, 139, 34));
 
 		jugadorMila.dibujar(window);
+		jugadorAnacleto.dibujar(window);
 
 		window.display();
 	}

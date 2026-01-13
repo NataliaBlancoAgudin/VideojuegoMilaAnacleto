@@ -28,24 +28,7 @@ void Entidad::actualizar(sf::Time deltaTime) {
 
 	int filaIdle = -1;
 	if (!seMueve && relojInactividad.getElapsedTime().asSeconds() > 5.0f) {
-		switch (direccionActual) {
-		case Arriba: case ArribaDerecha: case ArribaIzquierda:
-			filaIdle = 11;
-			break;
-
-		case Derecha: case AbajoDerecha:
-			filaIdle = 10;
-			break;
-
-		case Izquierda: case AbajoIzquierda:
-			filaIdle = 9;
-			break;
-
-		case Abajo: default:
-			filaIdle = 8;
-			break;
-		}
-		tiempoPorFrame = 0.25f;
+		filaIdle = 8;
 	}
 	else {
 		tiempoPorFrame = 0.15f;
