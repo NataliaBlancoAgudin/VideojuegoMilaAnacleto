@@ -1,288 +1,53 @@
-# 🎮 Mila y Anacleto - Aventura en SFML
+# 🎮 Mila y Anacleto - Devlog
 
-Un proyecto de videojuego 2D desarrollado en C++ utilizando la librería SFML. El proyecto documenta la evolución desde una ventana básica hasta la implementación de patrones de diseño y lógica de IA de acompañante.
+Proyecto de desarrollo de videojuegos en C++ y SFML. Este repositorio documenta la creación de un motor 2D básico, la implementación de personajes animados y el uso de patrones de diseño de software.
 
-## 🛠️ Tecnologías y Entorno
-
-* **Lenguaje:** C++
+## 🛠️ Tecnologías
 * **IDE:** Visual Studio 2022
-* **Librería:** SFML (Simple and Fast Multimedia Library) - Versión Visual C++ 17 (2022) 64-bit.
+* **Librería:** SFML (Visual C++ 17 64-bit)
+* **Herramientas de Arte:** Piskel (para edición de sprites)
 
 ---
 
-## ⚙️ Configuración del Entorno (11/01/2026)
+## 📅 Diario de Desarrollo
 
-Se ha decidido utilizar **Visual Studio 2022** alineado con las prácticas de la asignatura de Videojuegos.
+### 📅 11/01/2026 - Configuración y Primeros Pasos
+**Objetivo:** Configurar el entorno y renderizar el primer personaje.
 
-### Pasos de instalación realizados:
-1.  Descarga de SFML (VC++ 17 64-bit).
-2.  Descompresión de la librería.
-
-> ⚠️ **Nota de ubicación**
-> Se ha descomprimido la librería directamente en la carpeta `C:` para facilitar la vinculación.
-
-3.  Vinculación de librerías y cabeceras en las propiedades del proyecto de VS.
-
-> 🔔 **Importante**
-> Recordar revisar la configuración del *Linker* para incluir las dependencias de `sfml-graphics`, `sfml-window` y `sfml-system`.
+* **Configuración del Entorno:** Se instaló y vinculó SFML en Visual Studio 2022. Se realizaron pruebas de renderizado de ventana (Test de ventana verde).
+* **Creación de Mila (Torchic):**
+  * Implementación inicial como una forma geométrica simple (`sf::RectangleShape`).
+  * Implementación de movimiento básico por teclado.
+* **Integración de Sprites:**
+  * Sustitución del rectángulo por un *Sprite Sheet* de *Pokémon Mystery Dungeon*.
+  * Creación del sistema de animación básico mediante control de frames y relojes (`sf::Clock`).
 
 ---
 
-# 📅 Diario de Desarrollo
+### 📅 12/01/2026 - Animación Avanzada y Refactorización
+**Objetivo:** Mejorar el movimiento y limpiar la arquitectura del código.
 
-## Día 1: Primeros Pasos y Creación de Mila
+* **Mejoras en el Movimiento:**
+  * Implementación de movimiento en **8 direcciones** (incluyendo diagonales).
+  * Corrección matemática de la velocidad diagonal para mantener una velocidad constante.
+  * Creación de estados de inactividad: el personaje realiza una animación especial (dormir) tras 10 segundos quieto.
+* **Arquitectura de Software (Patrón Strategy):**
+  * Se detectó la necesidad de escalar el código para futuros personajes.
+  * **Clase `Entidad`:** Se creó una clase padre para gestionar sprites, texturas y lógica común.
+  * **Strategy Pattern:** Se separó la lógica de movimiento en una interfaz `EstrategiaMovimiento`, permitiendo intercambiar comportamientos (ej. `MovimientoTeclado`).
 
-### ⚙️ Hito 1: El Bucle de Juego
-Se configuró la ventana básica y el *Game Loop* (bucle de juego) para procesar eventos y renderizado.
+---
 
-<details>
-<summary>📄 Ver código del Main (Test inicial)</summary>
+### 📅 13/01/2026 - IA y Segundo Personaje
+**Objetivo:** Añadir un compañero (Anacleto) con comportamiento autónomo.
 
-```cpp
-#include <SFML/Graphics.hpp>
+* **Creación de Anacleto (Mudkip):**
+  * Gracias a la clase `Entidad`, la creación del nuevo personaje fue inmediata, heredando todas las propiedades visuales y lógicas de Mila.
+* **Nueva Estrategia de Movimiento (`MovimientoSeguir`):**
+  * Se implementó una IA de seguimiento para que Anacleto acompañe a Mila.
+  * **Lógica:** Cálculo de vectores de dirección y distancia mínima de confort.
+  * **Animación Automática:** El sprite cambia su dirección (arriba, abajo, diagonales) basándose matemáticamente en el vector de movimiento, sin input del teclado.
+* **Mejoras Generales:**
+  * Se actualizó la clase `Entidad` para incluir un estado de "Dormir" tras inactividad prolongada para todos los personajes.
 
-int main() {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Mila y Anacleto - Test");
-
-	while (window.isOpen()) {
-		sf::Event event;
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		window.clear(sf::Color::Green);
-		window.display();
-	}
-	return 0;
-}
-```
-</details>
-
-### 👤 Hito 2: Cración de personajes (básico)
-Una vez creado la pantalla básica del juego vamos a añadir nuestro primer personaje: Mila (Torchic)
-
-<details>
-<summary>📄 Ver código de Mila.h </summary>
-
-```cpp
-class Mila {
-private:
-	// Por ahora usaremos un rectángulo, luego será un Sprite
-	sf::RectangleShape forma;
-	float velocidad;
-
-public:
-	// Constructor
-	Mila();
-
-	// Métodos principales
-	void actualizar(); // Aquí procesaremos las teclas
-	void dibujar(sf::RenderWindow& ventana); // Aquí la pintaremos
-
-};
-```
-</details>
-
-<details>
-<summary>📄 Ver código de Mila.cpp </summary>
-
-```cpp
-#include "Mila.h"
-
-Mila::Mila() {
-	// Incializamos a Mila como un cuadrado amarillo de 50x50 (torchic)
-	forma.setSize(sf::Vector2f(50.f, 50.f));
-	forma.setFillColor(sf::Color::Yellow);
-	forma.setPosition(400.f, 300.f); // centro
-	velocidad = 0.2f; // velocidad de movimiento
-}
-
-void Mila::actualizar() {
-	// Detectar teclado (WASD o flechas)
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		forma.move(0.f, -velocidad);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		forma.move(0.f, velocidad);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		forma.move(-velocidad, 0.f);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		forma.move(velocidad, 0.f);
-	}
-}
-
-void Mila::dibujar(sf::RenderWindow& ventana) {
-	ventana.draw(forma);
-}
-```
-</details>
-
-Y hemos modificado nuestro `main.cpp` para añadir nuestro primer personaje
-<details>
-<summary>📄 Ver código de main.cpp</summary>
-
-```cpp
-#include <SFML/Graphics.hpp>
-#include "Mila.h"
-
-int main() {
-	// 1. Configuracion de la ventana
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Mila y Anacleto");
-
-	// 2. Crear las instancias (Objetos)
-	Mila jugadorMila;
-
-	// 3. Game Loop (bucle del juego)
-	while (window.isOpen()) {
-		// A. Procesar eventos (Cerrar ventana)
-		sf::Event event;
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-
-		// B. Actualizar lógica (Mover cosas)
-		jugadorMila.actualizar();
-
-		// c. Renderizar (Dibujar cosas)
-		window.clear(sf::Color(34, 139, 34));
-
-		jugadorMila.dibujar(window);
-
-		window.display();
-	}
-
-	return 0;
-}
-```
-</details>
-
-Y así tendremos nuestro primer personaje
-
-### 📃 Hito 3. Creación del sprite de Mila
-Teniendo ya la animación más o menos hemos decidido añadir el sprite de Mila. Para ello, buscando por Internet nos salió este sprite:
-
-[Torchic - Pokémon Mystery Dungeon: Explorers of Sky - DS / DSi](https://www.spriters-resource.com/ds_dsi/pokemonmysterydungeonexplorersofsky/asset/131076/)
-
-Que tiene todos los sprite que necesitamos (moverse hacia delante, hacia atrás, de lado,….) e incluso muchos mas! (nos vendrá bien para hacer más efectos)
-
-Separaremos el primer movimiento en un sprite para poder insertarlo en nuestro videojuego
-Y cambiaremos el código de Mila para añadirle esta animación
-<details>
-<summary>📄 Ver código de Mila.h</summary>
-
-```cpp
-#pragma once
-#include <SFML/Graphics.hpp>
-
-class Mila {
-private:
-	sf::Sprite sprite; // Muñeco que se ve en la pantalla
-	sf::Texture textura; // La imagen cargada en memoria (la hoja completa)
-	float velocidad;
-
-	// --- Variables de animación ---
-	sf::Clock relojAnimcación;
-	int frameActual;
-	float tiempoPorFrame;
-	int anchoFrame;
-	int altoFrame;
-
-public:
-	// Constructor
-	Mila();
-
-	// Métodos principales
-	void actualizar(); // Aquí procesaremos las teclas
-	void dibujar(sf::RenderWindow& ventana); // Aquí la pintaremos
-
-};
-```
-</details>
-
-<details>
-<summary>📄 Ver código de Mila.cpp</summary>
-
-```cpp
-#include "Mila.h"
-#include <iostream>
-
-Mila::Mila() {
-	// 1. Cargamos la imagen completa
-	if (!textura.loadFromFile("assets/Mila_walk.png")) {
-		std::cerr << "Error cargando la textura de Torchic" << std::endl;
-	}
-
-	// 2. Le ponemos la "piel" al sprite
-	sprite.setTexture(textura);
-
-	// 3. Configuración inicial
-	anchoFrame = 14;
-	altoFrame = 22;
-
-	frameActual = 0;
-	tiempoPorFrame = 0.10f;
-
-	// 3. Seleccionar el primer cuadro
-	sprite.setTextureRect(sf::IntRect(0, 0, anchoFrame, altoFrame));
-
-	// 4. Posición y escala
-	sprite.setPosition(400.f, 300.f);
-	sprite.setScale(3.f, 3.f);
-
-	velocidad = 0.2f;
-}
-
-void Mila::actualizar() {
-	bool seEstaMoviendo = false;
-
-	// Detectar teclado (WASD o flechas)
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		sprite.move(0.f, -velocidad);
-		seEstaMoviendo = true;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		sprite.move(0.f, velocidad);
-		seEstaMoviendo = true;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		sprite.move(-velocidad, 0.f);
-		seEstaMoviendo = true;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		sprite.move(velocidad, 0.f);
-		seEstaMoviendo = true;
-	}
-
-	// animacion
-	if (seEstaMoviendo) {
-		if (relojAnimcación.getElapsedTime().asSeconds() > tiempoPorFrame) {
-			frameActual++;
-
-			if (frameActual >= 6) {
-				frameActual = 0;
-			}
-
-			int posX = frameActual * anchoFrame;
-
-			sprite.setTextureRect(sf::IntRect(posX, 0, anchoFrame, altoFrame));
-
-			relojAnimcación.restart();
-		}
-	}
-	else {
-		frameActual = 2;
-		int posX = frameActual * anchoFrame;
-		sprite.setTextureRect(sf::IntRect(posX, 0, anchoFrame, altoFrame));
-	}
-}
-
-void Mila::dibujar(sf::RenderWindow& ventana) {
-	ventana.draw(sprite);
-}
-```
-</details>
-
-Y así hemos conseguido tener nuestra primera animación.
+---
