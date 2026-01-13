@@ -136,6 +136,7 @@
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mila.cpp" />
+    <ClCompile Include="MovimientoSeguir.cpp" />
     <ClCompile Include="MovimientoTeclado.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="EstrategiaMovimiento.h" />
     <ClInclude Include="Mila.h" />
+    <ClInclude Include="MovimientoSeguir.h" />
     <ClInclude Include="MovimientoTeclado.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

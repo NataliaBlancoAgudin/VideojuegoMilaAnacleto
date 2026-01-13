@@ -28,6 +28,8 @@ public:
 	virtual void actualizar(sf::Time deltaTime);
 	void dibujar(sf::RenderWindow& ventana);
 
+	const sf::Sprite& getSprite() const { return sprite;  }
+
 	// Funcion de ayuda para no repetri la mate de la animcaion
 	void procesarAnimacion(bool seMueve, int filaIdleEspecial = -1);
 };

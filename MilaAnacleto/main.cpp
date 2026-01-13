@@ -8,7 +8,7 @@ int main() {
 
 	// 2. Crear las instancias (Objetos)
 	Mila jugadorMila;
-	Anacleto jugadorAnacleto;
+	Anacleto jugadorAnacleto(jugadorMila.getSprite());
 
 	sf::Clock relojDelta;
 

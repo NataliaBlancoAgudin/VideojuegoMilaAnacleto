@@ -4,5 +4,5 @@
 class Anacleto : public Entidad {
 public:
 	// Constructor
-	Anacleto();
+	Anacleto(const sf::Sprite& spriteMila);
 };
