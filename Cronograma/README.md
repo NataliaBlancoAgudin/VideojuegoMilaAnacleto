@@ -22,6 +22,8 @@ Proyecto de desarrollo de videojuegos en C++ y SFML. Este repositorio documenta 
   * Sustitución del rectángulo por un *Sprite Sheet* de *Pokémon Mystery Dungeon*.
   * Creación del sistema de animación básico mediante control de frames y relojes (`sf::Clock`).
 
+![Sprite de Mila](https://github.com/NataliaBlancoAgudin/VideojuegoMilaAnacleto/blob/master/MilaAnacleto/assets/Mila_RPG.png)
+
 ---
 
 ### 📅 12/01/2026 - Animación Avanzada y Refactorización
@@ -54,4 +56,13 @@ Proyecto de desarrollo de videojuegos en C++ y SFML. Este repositorio documenta 
 * **Mejoras Generales:**
   * Se actualizó la clase `Entidad` para incluir un estado de "Dormir" tras inactividad prolongada para todos los personajes.
 
+![Sprite de Anacleto](https://github.com/NataliaBlancoAgudin/VideojuegoMilaAnacleto/blob/master/MilaAnacleto/assets/Anacleto_RPG.png)
+
 ---
+
+### 📅 16/01/2026 - Primer mapa
+**Objetivo** Crear el primer mapa del juego.
+
+* **Creación del mapa**:
+ * Se ha diseñado el mapa del pueblo de Faicín, el pueblo principal de nuestra historia, de donde salen nuestros protagonistas.
+<img src="https://github.com/NataliaBlancoAgudin/VideojuegoMilaAnacleto/blob/master/MilaAnacleto/assets/mapa_fondo.png" alt="Pueblo Faicín" width="300" />
