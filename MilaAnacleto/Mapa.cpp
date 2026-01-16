@@ -2,8 +2,8 @@
 #include <iostream>
 
 Mapa::Mapa() {
-	if (!textura.loadFromFile("assets/mapa_fondo.jpg")) {
-		std::cerr << "Error cargando la textura de Torchic" << std::endl;
+	if (!textura.loadFromFile("assets/mapa_fondo.png")) {
+		std::cerr << "Error cargando la textura del Mapa" << std::endl;
 	}
 
 	sprite.setTexture(textura);
