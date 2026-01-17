@@ -66,3 +66,18 @@ Proyecto de desarrollo de videojuegos en C++ y SFML. Este repositorio documenta 
 * **Creación del mapa**:
  * Se ha diseñado el mapa del pueblo de Faicín, el pueblo principal de nuestra historia, de donde salen nuestros protagonistas.
 <img src="https://github.com/NataliaBlancoAgudin/VideojuegoMilaAnacleto/blob/master/MilaAnacleto/assets/mapa_fondo.png" alt="Pueblo Faicín" width="300" />
+
+### 📅 17/01/2026 - Sistema de Mapas, Colisiones y Trasiciones
+**Objetivo** Implementar la carga dinámica de mapas, sistema de colisiones robusto y transiciones visuales entre zonas.
+
+* **Arquitectura de Mapas (Patrones de Diseño)**
+  * **Template Method**: Se reestructuró la clase `Mapa`. El método `cargar()` ahora
+  define el esqueleto del algoritmo (limpiar, cargar texturas, escalar), delegando en las subclases (`MapaFaicin`, `MapaInterior`) la implementación de los casos específicos (`configurarElementos()`)
+  * **Factory Method**: Se implementó `FactoriaMapas` para desacoplar el `main` de las subclases concretas. Ahora el juego solicita un mapa por su `ID` ("Faicin", "InteriorMila") y la fábrica devuelve la isntancia correcta envuelta en un `std::unique_ptr`
+* **Física y Colisiones (Muros)**
+  * Implementación de métodos `agregarMuro()` para definir zonas intransitables.
+  * **Hitbox Ajustada**: Se modificó la caja de colisión de las entidades para que solo cubra los pies/sombra. Esto permite simular profundidad (el personaje puede caminar "delante" de un muro superior sin chocar con él).
+  * **Sliding (Deslizamiento)**: Se separó el cálculo de movimiento en dos ejes (X e Y). Si el personaje choca en un eje, se cancela solo ese movimiento, permitiendo que se deslice por las paredes en lugar de quedarse atascado.
+* **Puertas y Transiciones**
+  * **Lógica de entrada**: Para cruzar una puerta, el personaje debe de estar en la mitad de la puerta
+  * **Clase `Transicion`**: Se creó un sistema de efectos visuales. Al cambiar de mapa, se ejecuta una animación **"Iris Wipe"** (un círculo negro que se cierra sobre el personaje y se vuelve a abrir en el nuevo mapa), ocultando la carga de texturas y el reposicionamiento.
