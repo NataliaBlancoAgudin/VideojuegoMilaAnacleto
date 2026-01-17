@@ -33,8 +33,8 @@ protected:
 	virtual void configurarElementos() = 0;
 
 	// para añadir los muros y las puertas DEBUG
-	std::vector<sf::RectangleShape> murosDebug;
-	std::vector<sf::RectangleShape> puertasDebug;
+	/*std::vector<sf::RectangleShape> murosDebug;
+	std::vector<sf::RectangleShape> puertasDebug;*/
 
 public:
 	virtual ~Mapa() {}

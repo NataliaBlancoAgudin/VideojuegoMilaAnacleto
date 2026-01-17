@@ -4,7 +4,7 @@ void Mapa::agregarMuro(float x, float y, float w, float h) {
 	muros.push_back(sf::FloatRect(x, y, w, h));
 
 	// DEBUG
-	sf::RectangleShape rect;
+	/*sf::RectangleShape rect;
 	rect.setPosition(x, y);
 	rect.setSize(sf::Vector2f(w, h));
 
@@ -12,14 +12,14 @@ void Mapa::agregarMuro(float x, float y, float w, float h) {
 	rect.setOutlineColor(sf::Color::Red);
 	rect.setOutlineThickness(1);
 
-	murosDebug.push_back(rect);
+	murosDebug.push_back(rect);*/
 }
 
 void Mapa::agregarPuerta(float x, float y, float w, float h, std::string idDestino, float sX, float sY) {
 	puertas.push_back({ sf::FloatRect(x,y,w,h), idDestino, sf::Vector2f(sX, sY) });
 
 	// DEBUG
-	sf::RectangleShape rect;
+	/*sf::RectangleShape rect;
 	rect.setPosition(x, y);
 	rect.setSize(sf::Vector2f(w, h));
 
@@ -27,7 +27,7 @@ void Mapa::agregarPuerta(float x, float y, float w, float h, std::string idDesti
 	rect.setOutlineColor(sf::Color::Blue);
 	rect.setOutlineThickness(1);
 
-	puertasDebug.push_back(rect);
+	puertasDebug.push_back(rect);*/
 }
 
 void Mapa::cargar() {
@@ -35,8 +35,8 @@ void Mapa::cargar() {
 	muros.clear();
 	puertas.clear();
 	// DEBUG
-	murosDebug.clear();
-	puertasDebug.clear();
+	/*murosDebug.clear();
+	puertasDebug.clear();*/
 
 	// 2. Cargamos la imagen
 	std::string archivo = "assets/" + getArchivoImagen();
@@ -56,13 +56,13 @@ void Mapa::dibujar(sf::RenderWindow& ventana) {
 	ventana.draw(sprite);
 
 	// DEBUG
-	for (const auto& rect : murosDebug) {
+	/*for (const auto& rect : murosDebug) {
 		ventana.draw(rect);
 	}
 
 	for (const auto& rect : puertasDebug) {
 		ventana.draw(rect);
-	}
+	}*/
 }
 
 bool Mapa::checkColision(sf::FloatRect rect) {
@@ -74,20 +74,14 @@ bool Mapa::checkColision(sf::FloatRect rect) {
 
 std::string Mapa::checkPuerta(sf::FloatRect rect, sf::Vector2f& spawnOut) {
 	for (const auto& p : puertas) {
-		// Variable para guardar el rectangulo del "choque"
-		sf::FloatRect intereseccion;
+		// 1. Calculamos el centro exacto de Mila
+		float centroX = rect.left + (rect.width / 2);
+		float centroY = rect.top + (rect.height / 2);
 
-		// esta version de intersects nos rellena la variable intereseccion
-		if (rect.intersects(p.zona, intereseccion)) {
-			// Calculamos el area que se solapan (ancho x alto)
-			float areaTocado = intereseccion.width * intereseccion.height;
-			float areaPuerta = p.zona.width * p.zona.height;
-
-			// Condicón: tienes que haber entrado al menos un 50% de la puerta
-			if (areaTocado > (areaPuerta * 0.9f)) {
-				spawnOut = p.spawnPoint;
-				return p.idMapaDestino;
-			}
+		// 2. ¿exe punto (x,y) está dentro del rectangulo de la puerta?
+		if (p.zona.contains(centroX, centroY)) {
+			spawnOut = p.spawnPoint;
+			return p.idMapaDestino;
 		}
 	}
 	return "";
