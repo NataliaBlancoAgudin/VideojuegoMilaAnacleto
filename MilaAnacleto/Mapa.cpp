@@ -74,9 +74,20 @@ bool Mapa::checkColision(sf::FloatRect rect) {
 
 std::string Mapa::checkPuerta(sf::FloatRect rect, sf::Vector2f& spawnOut) {
 	for (const auto& p : puertas) {
-		if (rect.intersects(p.zona)) {
-			spawnOut = p.spawnPoint;
-			return p.idMapaDestino;
+		// Variable para guardar el rectangulo del "choque"
+		sf::FloatRect intereseccion;
+
+		// esta version de intersects nos rellena la variable intereseccion
+		if (rect.intersects(p.zona, intereseccion)) {
+			// Calculamos el area que se solapan (ancho x alto)
+			float areaTocado = intereseccion.width * intereseccion.height;
+			float areaPuerta = p.zona.width * p.zona.height;
+
+			// Condicón: tienes que haber entrado al menos un 50% de la puerta
+			if (areaTocado > (areaPuerta * 0.9f)) {
+				spawnOut = p.spawnPoint;
+				return p.idMapaDestino;
+			}
 		}
 	}
 	return "";

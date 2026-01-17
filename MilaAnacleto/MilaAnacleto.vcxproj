@@ -142,6 +142,7 @@
     <ClCompile Include="Mila.cpp" />
     <ClCompile Include="MovimientoSeguir.cpp" />
     <ClCompile Include="MovimientoTeclado.cpp" />
+    <ClCompile Include="Transicion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Anacleto.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Mila.h" />
     <ClInclude Include="MovimientoSeguir.h" />
     <ClInclude Include="MovimientoTeclado.h" />
+    <ClInclude Include="Transicion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

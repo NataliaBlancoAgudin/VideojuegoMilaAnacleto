@@ -5,5 +5,5 @@ std::string MapaInterior::getArchivoImagen() {
 }
 
 void MapaInterior::configurarElementos() {
-	agregarMuro(128, 128, 3, 3);
+	agregarMuro(426, 429, 54, 54);
 }
