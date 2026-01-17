@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Direccion.h"
 #include "EstrategiaMovimiento.h"
+#include "Mapa.h"
 
 class Entidad {
 protected:
@@ -23,9 +24,15 @@ protected:
 public:
 	Entidad();
 
+	void setPosition(float x, float y);
+
+	void setPosition(sf::Vector2f nuevaPosicion);
+
+	sf::Vector2f getPosition();
+
 	void setEstrategia(std::unique_ptr<EstrategiaMovimiento> nuevaEstrategia);
 
-	virtual void actualizar(sf::Time deltaTime);
+	virtual void actualizar(sf::Time deltaTime, Mapa& mapa);
 	void dibujar(sf::RenderWindow& ventana);
 
 	const sf::Sprite& getSprite() const { return sprite;  }

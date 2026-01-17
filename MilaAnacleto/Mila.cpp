@@ -20,7 +20,7 @@ Mila::Mila() {
 	velocidad = 150.0f;
 
 	// 4. Posición y escala
-	sprite.setPosition(400.f, 300.f);
+	sprite.setPosition(1182, 1395);
 	sprite.setScale(3.f, 3.f);
 
 	setEstrategia(std::make_unique<MovimientoTeclado>());

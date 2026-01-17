@@ -134,8 +134,11 @@
   <ItemGroup>
     <ClCompile Include="Anacleto.cpp" />
     <ClCompile Include="Entidad.cpp" />
+    <ClCompile Include="FactoriaMapas.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mapa.cpp" />
+    <ClCompile Include="MapaFaicin.cpp" />
+    <ClCompile Include="MapaInterior.cpp" />
     <ClCompile Include="Mila.cpp" />
     <ClCompile Include="MovimientoSeguir.cpp" />
     <ClCompile Include="MovimientoTeclado.cpp" />
@@ -145,7 +148,10 @@
     <ClInclude Include="Direccion.h" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="EstrategiaMovimiento.h" />
+    <ClInclude Include="FactoriaMapas.h" />
     <ClInclude Include="Mapa.h" />
+    <ClInclude Include="MapaFaicin.h" />
+    <ClInclude Include="MapaInterior.h" />
     <ClInclude Include="Mila.h" />
     <ClInclude Include="MovimientoSeguir.h" />
     <ClInclude Include="MovimientoTeclado.h" />

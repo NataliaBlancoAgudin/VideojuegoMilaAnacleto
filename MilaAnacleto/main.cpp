@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "Mila.h"
 #include "Anacleto.h"
-#include "Mapa.h"
+#include "FactoriaMapas.h"
 
 int main() {
 	// 1. Configuracion de la ventana
@@ -11,7 +11,11 @@ int main() {
 	Mila jugadorMila;
 	Anacleto jugadorAnacleto(jugadorMila.getSprite());
 
-	Mapa mapa;
+	// 3. Creamos la fabrica de mapas
+	FactoriaMapas fabrica;
+
+	// Usamos la fábrica para crear el primer mapa
+	std::unique_ptr<Mapa> mapaActual = fabrica.crearMapa("Faicin");
 
 	sf::Clock relojDelta;
 	sf::View vista(sf::FloatRect(0.f, 0.f, 800.f, 600.f)); // Camara
@@ -28,9 +32,24 @@ int main() {
 				window.close();
 		}
 
-		// B. Actualizar lógica (Mover cosas)
-		jugadorMila.actualizar(dt);
-		jugadorAnacleto.actualizar(dt);
+		if (mapaActual) {
+			// B. Actualizar lógica (Mover cosas)
+			jugadorMila.actualizar(dt, *mapaActual);
+			jugadorAnacleto.actualizar(dt, *mapaActual);
+
+			sf::Vector2f spawnPoint;
+			std::string proximoMapaId = mapaActual->checkPuerta(jugadorMila.getSprite().getGlobalBounds(), spawnPoint);
+
+			if(proximoMapaId != "") {
+				std::unique_ptr<Mapa> nuevoMapa = fabrica.crearMapa(proximoMapaId);
+
+				if (nuevoMapa) {
+					mapaActual = std::move(nuevoMapa);
+					jugadorMila.setPosition(spawnPoint);
+					jugadorAnacleto.setPosition(spawnPoint);
+				}
+			}
+		}
 
 		// Centrar la camara
 		sf::Vector2f posicionMila = jugadorMila.getSprite().getPosition();
@@ -44,7 +63,7 @@ int main() {
 		// Activamos la camara
 		window.setView(vista);
 
-		mapa.dibujar(window);
+		if (mapaActual) mapaActual->dibujar(window);
 		jugadorMila.dibujar(window);
 		jugadorAnacleto.dibujar(window);
 

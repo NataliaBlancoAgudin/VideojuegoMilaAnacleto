@@ -20,7 +20,7 @@ Anacleto::Anacleto(const sf::Sprite& spriteMila) {
 	velocidad = 120.0f;
 
 	// 4. Posición y escala
-	sprite.setPosition(500.f, 300.f);
+	sprite.setPosition(1119, 1392);
 	sprite.setScale(3.f, 3.f);
 
 	setEstrategia(std::make_unique<MovimientoSeguir>(&spriteMila));
