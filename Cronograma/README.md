@@ -81,3 +81,20 @@ Proyecto de desarrollo de videojuegos en C++ y SFML. Este repositorio documenta 
 * **Puertas y Transiciones**
   * **Lógica de entrada**: Para cruzar una puerta, el personaje debe de estar en la mitad de la puerta
   * **Clase `Transicion`**: Se creó un sistema de efectos visuales. Al cambiar de mapa, se ejecuta una animación **"Iris Wipe"** (un círculo negro que se cierra sobre el personaje y se vuelve a abrir en el nuevo mapa), ocultando la carga de texturas y el reposicionamiento.
+
+### 📅 18/01/2026 - Refactorización y Documentación
+**Objetivo:** Mejorar la mantenibilidad del proyecto reorganizando la estructura de archivos y sincronizar la documentación técnica.
+
+* **Organización del Proyecto:**
+  * Se ha realizado una **limpieza de arquitectura**, moviendo los archivos fuente a carpetas específicas para facilitar la navegación y escalabilidad del código.
+  * Estructura actual del directorio `src`:
+
+```text
+📂 MilaAnacleto
+ ├── 📂 Entidad      # (Mila.h, Anacleto.h, Entidad.h...)
+ ├── 📂 Movimiento   # (EstrategiaMovimiento.h, Direccion.h...)
+ └── 📂 Mapa         # (Mapa.h, FactoriaMapas.h, Transicion.h...)
+```
+
+* **Diagrama UML actualizado**:
+![Diagrama UML](https://github.com/NataliaBlancoAgudin/VideojuegoMilaAnacleto/blob/master/UML/UML-PrimeraSemana.png)
