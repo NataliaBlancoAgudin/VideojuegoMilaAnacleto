@@ -18,6 +18,33 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Entidad\Anacleto.cpp" />
+    <ClCompile Include="Entidad\Entidad.cpp" />
+    <ClCompile Include="Entidad\Mila.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mapa\FactoriaMapas.cpp" />
+    <ClCompile Include="Mapa\Mapa.cpp" />
+    <ClCompile Include="Mapa\MapaFaicin.cpp" />
+    <ClCompile Include="Mapa\MapaInterior.cpp" />
+    <ClCompile Include="Mapa\Transicion.cpp" />
+    <ClCompile Include="Movimiento\MovimientoSeguir.cpp" />
+    <ClCompile Include="Movimiento\MovimientoTeclado.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Entidad\Anacleto.h" />
+    <ClInclude Include="Entidad\Entidad.h" />
+    <ClInclude Include="Entidad\Mila.h" />
+    <ClInclude Include="Mapa\FactoriaMapas.h" />
+    <ClInclude Include="Mapa\Mapa.h" />
+    <ClInclude Include="Mapa\MapaFaicin.h" />
+    <ClInclude Include="Mapa\MapaInterior.h" />
+    <ClInclude Include="Mapa\Transicion.h" />
+    <ClInclude Include="Movimiento\Direccion.h" />
+    <ClInclude Include="Movimiento\EstrategiaMovimiento.h" />
+    <ClInclude Include="Movimiento\MovimientoSeguir.h" />
+    <ClInclude Include="Movimiento\MovimientoTeclado.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -107,6 +134,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)Movimiento;$(ProjectDir)Mapa;$(ProjectDir)Entidad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,6 +151,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)Movimiento;$(ProjectDir)Mapa;$(ProjectDir)Entidad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,33 +160,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Anacleto.cpp" />
-    <ClCompile Include="Entidad.cpp" />
-    <ClCompile Include="FactoriaMapas.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mapa.cpp" />
-    <ClCompile Include="MapaFaicin.cpp" />
-    <ClCompile Include="MapaInterior.cpp" />
-    <ClCompile Include="Mila.cpp" />
-    <ClCompile Include="MovimientoSeguir.cpp" />
-    <ClCompile Include="MovimientoTeclado.cpp" />
-    <ClCompile Include="Transicion.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Anacleto.h" />
-    <ClInclude Include="Direccion.h" />
-    <ClInclude Include="Entidad.h" />
-    <ClInclude Include="EstrategiaMovimiento.h" />
-    <ClInclude Include="FactoriaMapas.h" />
-    <ClInclude Include="Mapa.h" />
-    <ClInclude Include="MapaFaicin.h" />
-    <ClInclude Include="MapaInterior.h" />
-    <ClInclude Include="Mila.h" />
-    <ClInclude Include="MovimientoSeguir.h" />
-    <ClInclude Include="MovimientoTeclado.h" />
-    <ClInclude Include="Transicion.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

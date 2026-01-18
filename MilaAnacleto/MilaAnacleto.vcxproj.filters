@@ -13,78 +13,87 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Entidad">
+      <UniqueIdentifier>{d69d9c50-2fdc-492a-bcd5-8d772030e2c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Movimiento">
+      <UniqueIdentifier>{8fdc8b3c-3224-4544-92ea-b2dac8ae0e72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mapa">
+      <UniqueIdentifier>{48ba891a-bba4-4a38-bdc5-6a38adfee341}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Entidad\Anacleto.cpp">
+      <Filter>Entidad</Filter>
+    </ClCompile>
+    <ClCompile Include="Entidad\Entidad.cpp">
+      <Filter>Entidad</Filter>
+    </ClCompile>
+    <ClCompile Include="Entidad\Mila.cpp">
+      <Filter>Entidad</Filter>
+    </ClCompile>
+    <ClCompile Include="Movimiento\MovimientoSeguir.cpp">
+      <Filter>Movimiento</Filter>
+    </ClCompile>
+    <ClCompile Include="Movimiento\MovimientoTeclado.cpp">
+      <Filter>Movimiento</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapa\FactoriaMapas.cpp">
+      <Filter>Mapa</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapa\Mapa.cpp">
+      <Filter>Mapa</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapa\MapaFaicin.cpp">
+      <Filter>Mapa</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapa\MapaInterior.cpp">
+      <Filter>Mapa</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapa\Transicion.cpp">
+      <Filter>Mapa</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Mila.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Entidad.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="MovimientoTeclado.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Anacleto.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="MovimientoSeguir.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Mapa.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="MapaFaicin.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="MapaInterior.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="FactoriaMapas.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Transicion.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Mila.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Entidad\Anacleto.h">
+      <Filter>Entidad</Filter>
     </ClInclude>
-    <ClInclude Include="Entidad.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Entidad\Entidad.h">
+      <Filter>Entidad</Filter>
     </ClInclude>
-    <ClInclude Include="EstrategiaMovimiento.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Entidad\Mila.h">
+      <Filter>Entidad</Filter>
     </ClInclude>
-    <ClInclude Include="MovimientoTeclado.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Movimiento\Direccion.h">
+      <Filter>Movimiento</Filter>
     </ClInclude>
-    <ClInclude Include="Direccion.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Movimiento\EstrategiaMovimiento.h">
+      <Filter>Movimiento</Filter>
     </ClInclude>
-    <ClInclude Include="Anacleto.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Movimiento\MovimientoSeguir.h">
+      <Filter>Movimiento</Filter>
     </ClInclude>
-    <ClInclude Include="MovimientoSeguir.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Movimiento\MovimientoTeclado.h">
+      <Filter>Movimiento</Filter>
     </ClInclude>
-    <ClInclude Include="Mapa.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Mapa\FactoriaMapas.h">
+      <Filter>Mapa</Filter>
     </ClInclude>
-    <ClInclude Include="MapaFaicin.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Mapa\Mapa.h">
+      <Filter>Mapa</Filter>
     </ClInclude>
-    <ClInclude Include="MapaInterior.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Mapa\MapaFaicin.h">
+      <Filter>Mapa</Filter>
     </ClInclude>
-    <ClInclude Include="FactoriaMapas.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Mapa\MapaInterior.h">
+      <Filter>Mapa</Filter>
     </ClInclude>
-    <ClInclude Include="Transicion.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Mapa\Transicion.h">
+      <Filter>Mapa</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
